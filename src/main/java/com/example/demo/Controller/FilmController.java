@@ -25,8 +25,14 @@ public class FilmController {
         return films;
     }
 
+    @GetMapping(value = "/GetFilmsByRealisateur/{NoRea}")
+    public List<Film> getAllFilms(@PathVariable("NoRea") int id){
+        List<Film> films = this.service.getAllFilmByRealisateur(id);
+        return films;
+    }
+
     @GetMapping(value = "/GetFilm/{NoFilm}")
-    public Optional<Film> getAllFilms(@PathVariable("NoFilm") int id){
+    public Optional<Film> getOneFilm(@PathVariable("NoFilm") int id){
         Optional<Film> film = this.service.getOneById(id);
         return film;
     }
