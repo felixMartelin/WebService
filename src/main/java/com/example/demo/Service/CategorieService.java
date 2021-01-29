@@ -21,7 +21,7 @@ public class CategorieService {
 
     public List<Categorie> getAllCategories() {return this.repository.findAll();}
 
-    public Optional<Categorie> getOneById(int id){return this.repository.findById(id);}
+    public Optional<Categorie> getOneById(String id){return this.repository.findById(id);}
 
     public void AddCategorie(Categorie categorie){this.repository.save(categorie);}
 

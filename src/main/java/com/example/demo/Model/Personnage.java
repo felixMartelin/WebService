@@ -1,23 +1,64 @@
 package com.example.demo.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+class PersonnageId implements Serializable {
+    @NotNull
+    public Integer NoFilm;
+
+    @NotNull
+    public Integer NoAct;
+
+    public Integer getNoFilm() {
+        return this.NoFilm;
+    }
+
+    public void setNoFilm(Integer NoF) {
+        this.NoFilm = NoF;
+    }
+
+    public Integer getNoAct() {
+        return this.NoAct;
+    }
+
+    public void setNoAct(Integer NoA) {
+        this.NoAct = NoA;
+    }
+}
+
+
 @Entity
+@IdClass(PersonnageId.class)
 @Table(name = "personnage", schema = "cinema")
 public class Personnage {
-    @EmbeddedId
-    private PersonnageId personnageId;
+    private Integer NoFilm;
+    private Integer NoAct;
     private String Nom;
     private Acteur acteurByActeurId;
     private Film filmByFilmId;
 
-    public PersonnageId getPersonnageId(){return this.personnageId;}
+    @Id
+    @Column(name = "nofilm", nullable = false)
+    public int getNoFilm() {
+        return this.NoFilm;
+    }
 
-    public void setPersonnageId(PersonnageId p){
-        this.personnageId = p;
+    public void setNoFilm(Integer noFilm) {
+        this.NoFilm = noFilm;
+    }
+
+    @Id
+    @Column(name = "noact", nullable = false)
+    public int getNoAct() {
+        return this.NoAct;
+    }
+
+    public void setNoAct(Integer noAct) {
+        this.NoAct = noAct;
     }
 
     @Basic

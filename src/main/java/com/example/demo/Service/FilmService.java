@@ -22,12 +22,6 @@ public class FilmService {
 
     public Optional<Film> getOneById(int id){return this.repository.findById(id);}
 
-    public List<Film> getAllFilmByRealisateur(int id){return this.repository.findAllWithRealisateur(id);}
-
-    public List<Film> getAllFilmByCategorie(String id){
-        return this.repository.findAllWithCategorie(id);
-    }
-
     public void AddFilm(Film film){this.repository.save(film);}
 
     public void deleteById(int id){this.repository.deleteById(id);}

@@ -1,8 +1,10 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Model.Categorie;
 import com.example.demo.Model.Film;
 import com.example.demo.Service.CategorieService;
 import com.example.demo.Service.FilmService;
+import com.example.demo.Service.RealisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +16,15 @@ import java.util.Optional;
 public class FilmController {
     @Autowired
     private FilmService service;
+    @Autowired
+    private CategorieService categorieService;
+    @Autowired
+    private RealisateurService realisateurService;
 
-    public FilmController(FilmService serv){
+    public FilmController(FilmService serv, CategorieService serv2, RealisateurService serv3){
         this.service = serv;
+        this.categorieService = serv2;
+        this.realisateurService = serv3;
     }
 
     @GetMapping(value = "/GetFilms")
@@ -27,13 +35,13 @@ public class FilmController {
 
     @GetMapping(value = "/GetFilmsByRealisateur/{NoRea}")
     public List<Film> getAllFilms(@PathVariable("NoRea") int id){
-        List<Film> films = this.service.getAllFilmByRealisateur(id);
+        List<Film> films = this.realisateurService.getOneById(id).get().getFilmList();
         return films;
     }
 
     @GetMapping(value = "/GetFilmsByCategorie/{CodeCat}")
-    public List<Film> getAllFilms(@PathVariable("CodeCat") String id){
-        List<Film> films = this.service.getAllFilmByCategorie(id);
+    public List<Film> getAllFilmsByCategorie(@PathVariable("CodeCat") String id){
+        List<Film> films = this.categorieService.getOneById(id).get().getFilmList();
         return films;
     }
 
