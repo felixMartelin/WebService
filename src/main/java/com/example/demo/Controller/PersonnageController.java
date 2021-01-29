@@ -37,13 +37,13 @@ public class PersonnageController {
         this.service.AddPersonnage(personnage);
     }
 
-    @PutMapping(value = "/UpdateActeur")
+    @PutMapping(value = "/UpdatePersonnage")
     public ResponseEntity updatePersonnage(@RequestBody Personnage personnage, @RequestParam(value = "NoAct") int noAct, @RequestParam(value = "NoFilm") int noFilm){
         this.service.updateById(personnage,noAct,noFilm);
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(value = "/DeleteTemperature")
+    @DeleteMapping(value = "/DeletePersonnage")
     public ResponseEntity deleteTemperature(@RequestParam(value = "NoAct") int noAct, @RequestParam(value = "NoFilm") int noFilm){
         this.service.deleteById(noAct,noFilm);
         return ResponseEntity.noContent().build();

@@ -31,6 +31,12 @@ public class FilmController {
         return films;
     }
 
+    @GetMapping(value = "/GetFilmsByCategorie/{CodeCat}")
+    public List<Film> getAllFilms(@PathVariable("CodeCat") String id){
+        List<Film> films = this.service.getAllFilmByCategorie(id);
+        return films;
+    }
+
     @GetMapping(value = "/GetFilm/{NoFilm}")
     public Optional<Film> getOneFilm(@PathVariable("NoFilm") int id){
         Optional<Film> film = this.service.getOneById(id);
@@ -45,6 +51,12 @@ public class FilmController {
     @PutMapping(value = "/UpdateFilm/{NoFilm}")
     public ResponseEntity updateFilm(@RequestBody Film film, @RequestParam(value = "NoFilm") int id){
         this.service.updateById(film,id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping(value = "/DeleteFilm")
+    public ResponseEntity deleteTemperature(@RequestParam(value = "NoFilm") int noFilm){
+        this.service.deleteById(noFilm);
         return ResponseEntity.noContent().build();
     }
 }
