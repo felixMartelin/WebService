@@ -14,6 +14,12 @@ public class Personnage {
     private Acteur acteurByActeurId;
     private Film filmByFilmId;
 
+    public PersonnageId getPersonnageId(){return this.personnageId;}
+
+    public void setPersonnageId(PersonnageId p){
+        this.personnageId = p;
+    }
+
     @Basic
     @Column(name = "nompers", nullable = false)
     public String getNom() {

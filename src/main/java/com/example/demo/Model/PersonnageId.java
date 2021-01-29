@@ -17,5 +17,19 @@ public class PersonnageId implements Serializable {
 
     }
 
+    public int getNoAct() {
+        return this.NoAct;
+    }
 
+    public void setNoAct(int noAct) {
+        this.NoAct = noAct;
+    }
+
+    public int getNoFilm() {
+        return this.NoFilm;
+    }
+
+    public void setNoFilm(int noFilm) {
+        this.NoFilm = noFilm;
+    }
 }
