@@ -34,7 +34,7 @@ public class PersonnageService {
         if(personnageUpdate.isPresent())
         {
             Personnage personnageUpdated = personnageUpdate.get();
-            if(personnage.getNom() != personnageUpdated.getNom()){
+            if(!personnage.getNom().equals(personnageUpdated.getNom())){
                 personnageUpdated.setNom(personnage.getNom());
             }
             this.repository.save(personnageUpdated);

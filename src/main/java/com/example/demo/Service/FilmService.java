@@ -36,7 +36,7 @@ public class FilmService {
             if(film.getBudget() != filmUpdated.getBudget()){
                 filmUpdated.setBudget(film.getBudget());
             }
-            if(film.getCodeCat() != filmUpdated.getCodeCat()){
+            if(!film.getCodeCat().equals(filmUpdated.getCodeCat())){
                 filmUpdated.setCodeCat(film.getCodeCat());
             }
             if(film.getDuree() != filmUpdated.getDuree()){
@@ -48,7 +48,7 @@ public class FilmService {
             if(film.getRecette() != filmUpdated.getRecette()){
                 filmUpdated.setRecette(film.getRecette());
             }
-            if(film.getTitre() != filmUpdated.getTitre()){
+            if(!film.getTitre().equals(filmUpdated.getTitre())){
                 filmUpdated.setTitre(film.getTitre());
             }
             this.repository.save(filmUpdated);

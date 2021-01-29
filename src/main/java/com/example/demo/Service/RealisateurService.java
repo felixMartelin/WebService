@@ -32,10 +32,10 @@ public class RealisateurService {
         if(RealisateurUpdate.isPresent())
         {
             Realisateur realisateurUpdated = RealisateurUpdate.get();
-            if(realisateur.getNom() != realisateurUpdated.getNom()){
+            if(!realisateur.getNom().equals(realisateurUpdated.getNom())){
                 realisateurUpdated.setNom(realisateur.getNom());
             }
-            if(realisateur.getPrenom() != realisateurUpdated.getPrenom()){
+            if(!realisateur.getPrenom().equals(realisateurUpdated.getPrenom())){
                 realisateurUpdated.setPrenom(realisateurUpdated.getPrenom());
             }
             this.repository.save(realisateurUpdated);

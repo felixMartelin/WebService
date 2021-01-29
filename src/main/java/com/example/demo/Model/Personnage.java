@@ -1,23 +1,18 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "personnage", schema = "cinema")
 public class Personnage {
-    private int NoFilm;
-    private int NoAct;
+    @EmbeddedId
+    private PersonnageId personnageId;
     private String Nom;
-
-    @Id
-    @Column(name = "nofilm", nullable = false)
-    public int getNoFilm() {
-        return this.NoFilm;
-    }
-
-    public void setNoFilm(int noFilm) {
-        this.NoFilm = noFilm;
-    }
+    private Acteur acteurByActeurId;
+    private Film filmByFilmId;
 
     @Basic
     @Column(name = "nompers", nullable = false)
@@ -29,13 +24,25 @@ public class Personnage {
         this.Nom = nom;
     }
 
-    @Basic
-    @Column(name = "noact", nullable = false)
-    public int getNoAct() {
-        return this.NoAct;
+    @ManyToOne
+    @JoinColumn(name = "noact", referencedColumnName = "noact", insertable = false, updatable = false)
+    @JsonIgnore
+    public Acteur getActeurByActeurId() {
+        return acteurByActeurId;
     }
 
-    public void setNoAct(int noAct) {
-        this.NoAct = noAct;
+    public void setActeurByActeurId(Acteur acteur) {
+        this.acteurByActeurId = acteur;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "nofilm", referencedColumnName = "nofilm", insertable = false, updatable = false)
+    @JsonIgnore
+    public Film getFilmByFilmId() {
+        return filmByFilmId;
+    }
+
+    public void setFilmByFilmId(Film film) {
+        this.filmByFilmId = film;
     }
 }

@@ -37,10 +37,10 @@ public class ActeurService {
             if(acteur.getDateNaissance() != ActeurUpdated.getDateNaissance()){
                 ActeurUpdated.setDateNaissance(acteur.getDateNaissance());
             }
-            if(acteur.getNom() != ActeurUpdated.getNom()){
+            if(!acteur.getNom().equals(ActeurUpdated.getNom())){
                 ActeurUpdated.setNom(acteur.getNom());
             }
-            if(acteur.getPrenom() != ActeurUpdated.getPrenom()){
+            if(!acteur.getPrenom().equals(ActeurUpdated.getPrenom())){
                 ActeurUpdated.setPrenom(acteur.getPrenom());
             }
             this.repository.save(ActeurUpdated);

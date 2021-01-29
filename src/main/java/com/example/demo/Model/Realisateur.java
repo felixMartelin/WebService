@@ -1,6 +1,9 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "realisateur", schema = "cinema")
@@ -8,6 +11,7 @@ public class Realisateur {
     private int NoRea;
     private String Nom;
     private String Prenom;
+    private List<Film> filmList;
 
     @Basic
     @Column(name = "nomrea", nullable = false)
@@ -38,5 +42,16 @@ public class Realisateur {
 
     public void setPrenom(String prenom) {
         this.Prenom = prenom;
+    }
+
+    @OneToMany
+    @JoinColumn(name = "norea", referencedColumnName = "norea", insertable = false, updatable = false)
+    @JsonIgnore
+    public List<Film> getFilmList() {
+        return this.filmList;
+    }
+
+    public void setFilmList(List<Film> f) {
+        this.filmList = f;
     }
 }

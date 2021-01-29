@@ -1,7 +1,10 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "film", schema = "cinema")
@@ -14,6 +17,9 @@ public class Film {
     private int Recette;
     private int NoRea;
     private String CodeCat;
+    private List<Personnage> personnageList;
+    private Realisateur realisateurByRealisateurId;
+    private Categorie categorieByCategorieId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -94,5 +100,38 @@ public class Film {
 
     public void setTitre(String titre) {
         this.Titre = titre;
+    }
+
+    @OneToMany
+    @JoinColumn(name = "nofilm", referencedColumnName = "nofilm", insertable = false, updatable = false)
+    @JsonIgnore
+    public List<Personnage> getPersonnageList() {
+        return this.personnageList;
+    }
+
+    public void setPersonnageList(List<Personnage> p) {
+        this.personnageList = p;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "codecat", referencedColumnName = "codecat", insertable = false, updatable = false)
+    @JsonIgnore
+    public Categorie getCategorieByCategorieId() {
+        return this.categorieByCategorieId;
+    }
+
+    public void setCategorieByCategorieId(Categorie cat) {
+        this.categorieByCategorieId = cat;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "norea", referencedColumnName = "norea", insertable = false, updatable = false)
+    @JsonIgnore
+    public Realisateur getRealisateurByRealisateurId() {
+        return this.realisateurByRealisateurId;
+    }
+
+    public void setRealisateurByRealisateurId(Realisateur real) {
+        this.realisateurByRealisateurId = real;
     }
 }
