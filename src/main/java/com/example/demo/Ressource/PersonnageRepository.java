@@ -31,5 +31,5 @@ public interface PersonnageRepository extends JpaRepository<Personnage, Integer>
 
     @Transactional
     @Modifying
-    Personnage deleteByNoActAndNoFilm(long noAct, long noFilm);
+    void deleteByNoActAndNoFilm(long noAct, long noFilm);
 }

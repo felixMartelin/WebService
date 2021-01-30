@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -76,18 +75,19 @@ public class PersonnageController {
         newPers.setNoFilm(film.getBody().getNoFilm());
         newPers.setActeurByActeurId(acteur.getBody());
         newPers.setFilmByFilmId(film.getBody());
-        System.out.println("Essai new pers get acteur get prenom : " + newPers.getActeurByActeurId().getPrenom());
         return ResponseEntity.ok(this.service.addNewPersonnage(newPers));
     }
 
     @PutMapping(value = "/UpdatePersonnage")
     public ResponseEntity updatePersonnage(@RequestBody Map<String, String> payload){
+        String oldNoActStr = payload.get("oldNoAct"), oldNoFilmStr = payload.get("oldNoFilm");
+        deletePersonnage(oldNoActStr, oldNoFilmStr);
         return addPersonnage(payload);
     }
 
     @DeleteMapping(value = "/DeletePersonnage")
-    public ResponseEntity deleteTemperature(@RequestParam(value = "NoAct") String noActStr,
-                                            @RequestParam(value = "NoFilm") String noFilmStr){
+    public ResponseEntity deletePersonnage(@RequestParam(value = "NoAct") String noActStr,
+                                           @RequestParam(value = "NoFilm") String noFilmStr){
         ResponseEntity<Acteur> acteur = getActeur(noActStr);
         if(acteur.getStatusCode() != HttpStatus.OK) {
             return acteur;
@@ -96,7 +96,6 @@ public class PersonnageController {
         if(film.getStatusCode() != HttpStatus.OK) {
             return film;
         }
-        System.out.println("Delete role by actor id " + acteur.getBody().getNoAct() + " and movie id " + film.getBody().getNoFilm());
         this.service.delete(acteur.getBody().getNoAct(),film.getBody().getNoFilm());
         return ResponseEntity.ok().build();
     }
