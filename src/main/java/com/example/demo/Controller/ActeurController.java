@@ -46,7 +46,7 @@ public class ActeurController {
         List<Personnage> persos = this.servicePerso.getAllByNoAct(id);
         List<Film> films = new ArrayList<>();
         for(int i=0;i<persos.size();i++){
-            films.add(this.serviceFilm.getOneById(persos.get(i).getNoFilm().getNoFilm()).get());
+            films.add(this.serviceFilm.getOneById(persos.get(i).getNoFilm()).get());
         }
         return films;
     }

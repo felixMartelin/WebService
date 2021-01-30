@@ -5,30 +5,31 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 class PersonnageId implements Serializable {
-    public Film NoFilm;
+    public long NoFilm;
 
-    public Acteur NoAct;
+    public long NoAct;
 
     @Id
     @Column(name = "nofilm", nullable = false)
-    public Film getNoFilm() {
+    public long getNoFilm() {
         return NoFilm;
     }
 
-    public void setNoFilm(Film NoF) {
+    public void setNoFilm(long NoF) {
         NoFilm = NoF;
     }
 
     @Id
     @Column(name = "noact", nullable = false)
-    public Acteur getNoAct() {
+    public long getNoAct() {
         return NoAct;
     }
 
-    public void setNoAct(Acteur NoA) {
+    public void setNoAct(long NoA) {
         NoAct = NoA;
     }
 
@@ -52,31 +53,31 @@ class PersonnageId implements Serializable {
 @IdClass(PersonnageId.class)
 @Table(name = "personnage", schema = "cinema")
 public class Personnage {
-    private Film NoFilm;
-    private Acteur NoAct;
+    private long NoFilm;
+    private long NoAct;
     private String Nom;
-    /*
+
     private Acteur acteurByActeurId;
     private Film filmByFilmId;
-     */
+
 
     @Id
     @Column(name = "nofilm", nullable = false)
-    public Film getNoFilm() {
+    public long getNoFilm() {
         return NoFilm;
     }
 
-    public void setNoFilm(Film noFilm) {
+    public void setNoFilm(long noFilm) {
         NoFilm = noFilm;
     }
 
     @Id
     @Column(name = "noact", nullable = false)
-    public Acteur getNoAct() {
+    public long getNoAct() {
         return NoAct;
     }
 
-    public void setNoAct(Acteur noAct) {
+    public void setNoAct(long noAct) {
         NoAct = noAct;
     }
 
@@ -90,23 +91,22 @@ public class Personnage {
         Nom = nom;
     }
 
-    /*
+
     @ManyToOne
     @JoinColumn(name = "noact", referencedColumnName = "noact", insertable = false, updatable = false)
-    @JsonIgnore
     public Acteur getActeurByActeurId() {
         return acteurByActeurId;
     }
 
     public void setActeurByActeurId(Acteur acteur) {
         this.acteurByActeurId = acteur;
+        acteurByActeurId.setPersonnageList(new ArrayList<>());
     }
-    */
 
-    /*
+
+
     @ManyToOne
     @JoinColumn(name = "nofilm", referencedColumnName = "nofilm", insertable = false, updatable = false)
-    @JsonIgnore
     public Film getFilmByFilmId() {
         return filmByFilmId;
     }
@@ -114,5 +114,5 @@ public class Personnage {
     public void setFilmByFilmId(Film film) {
         this.filmByFilmId = film;
     }
-     */
+
 }

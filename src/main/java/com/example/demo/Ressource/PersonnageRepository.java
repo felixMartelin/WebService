@@ -23,16 +23,13 @@ public interface PersonnageRepository extends JpaRepository<Personnage, Integer>
     @Query("DELETE FROM Personnage p WHERE p.noAct =?1 AND p.noFilm =?2")
     void DeleteById(long id, long id2);
 
-    @Query("SELECT p FROM Personnage p WHERE p.noAct =?1")
-    List<Personnage> findAllByNoAct(long id);
+    List<Personnage> findAllByNoAct(long noAct);
 
     @Transactional
     @Modifying
-    Personnage findByNoActAndNoFilm(Acteur noAct, Film noFilm);
+    Personnage findByNoActAndNoFilm(long noAct, long noFilm);
 
     @Transactional
     @Modifying
-    Personnage deleteByNoActAndNoFilm(Acteur noAct, Film noFilm);
-
-    List<Personnage> findAllByNoAct(Acteur noAct);
+    Personnage deleteByNoActAndNoFilm(long noAct, long noFilm);
 }
