@@ -1,8 +1,8 @@
-#Server Spring Boot Poly'Movies
+# Server Spring Boot Poly'Movies
 
-###Félix Martelin & Ewald Janin - WebServices 2020/2021
+### Félix Martelin & Ewald Janin - WebServices 2020/2021
 
-Ce serveur Java réalisé à l'aide du framework `Spring Boot`.
+Ce serveur Java est réalisé à l'aide du framework `Spring Boot`.
 
 Ce serveur met à disposition une API RESTful pour consommer les données d'une base de données de films, d'acteurs, de personnages, et de réalisateurs.
 
