@@ -35,7 +35,6 @@ public class Categorie {
 
     @OneToMany
     @JoinColumn(name = "codecat", referencedColumnName = "codecat", insertable = false, updatable = false)
-    @JsonIgnore
     public List<Film> getFilmList() {
         return this.filmList;
     }

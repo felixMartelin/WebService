@@ -3,19 +3,20 @@ package com.example.demo.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "film", schema = "cinema")
 public class Film {
-    private int NoFilm;
+    private long NoFilm;
     private String Titre;
     private int Duree;
     private Date DateSortie;
     private int Budget;
     private int Recette;
-    private int NoRea;
+    private long NoRea;
     private String CodeCat;
     private List<Personnage> personnageList;
     private Realisateur realisateurByRealisateurId;
@@ -24,11 +25,11 @@ public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "nofilm", nullable = false)
-    public int getNoFilm() {
+    public long getNoFilm() {
         return this.NoFilm;
     }
 
-    public void setNoFilm(int noFilm) {
+    public void setNoFilm(long noFilm) {
         this.NoFilm = noFilm;
     }
 
@@ -64,11 +65,11 @@ public class Film {
 
     @Basic
     @Column(name = "norea", nullable = false)
-    public int getNoRea() {
+    public long getNoRea() {
         return this.NoRea;
     }
 
-    public void setNoRea(int noRea) {
+    public void setNoRea(long noRea) {
         this.NoRea = noRea;
     }
 
@@ -104,7 +105,6 @@ public class Film {
 
     @OneToMany
     @JoinColumn(name = "nofilm", referencedColumnName = "nofilm", insertable = false, updatable = false)
-    @JsonIgnore
     public List<Personnage> getPersonnageList() {
         return this.personnageList;
     }
@@ -115,23 +115,29 @@ public class Film {
 
     @ManyToOne
     @JoinColumn(name = "codecat", referencedColumnName = "codecat", insertable = false, updatable = false)
-    @JsonIgnore
     public Categorie getCategorieByCategorieId() {
+        if(categorieByCategorieId != null) {
+            categorieByCategorieId.setFilmList(new ArrayList<>());
+        }
         return this.categorieByCategorieId;
     }
 
     public void setCategorieByCategorieId(Categorie cat) {
         this.categorieByCategorieId = cat;
+        categorieByCategorieId.setFilmList(new ArrayList<>());
     }
 
     @ManyToOne
     @JoinColumn(name = "norea", referencedColumnName = "norea", insertable = false, updatable = false)
-    @JsonIgnore
     public Realisateur getRealisateurByRealisateurId() {
+        if (realisateurByRealisateurId != null) {
+            realisateurByRealisateurId.setFilmList(new ArrayList<>());
+        }
         return this.realisateurByRealisateurId;
     }
 
     public void setRealisateurByRealisateurId(Realisateur real) {
         this.realisateurByRealisateurId = real;
+        realisateurByRealisateurId.setFilmList(new ArrayList<>());
     }
 }

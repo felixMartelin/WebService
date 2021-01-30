@@ -25,5 +25,5 @@ public class CategorieService {
 
     public void AddCategorie(Categorie categorie){this.repository.save(categorie);}
 
-    public void deleteById(int id){this.repository.deleteById(id);}
+    public void deleteById(String id){this.repository.deleteById(id);}
 }

@@ -20,13 +20,13 @@ public class FilmService {
 
     public List<Film> getAllFilms() {return this.repository.findAll();}
 
-    public Optional<Film> getOneById(int id){return this.repository.findById(id);}
+    public Optional<Film> getOneById(long id){return this.repository.findById(id);}
 
     public void AddFilm(Film film){this.repository.save(film);}
 
-    public void deleteById(int id){this.repository.deleteById(id);}
+    public void deleteById(long id){this.repository.deleteById(id);}
 
-    public void updateById(Film film,int id){
+    public void updateById(Film film,long id){
         Optional<Film> filmUpdate = this.repository.findById(id);
         if(filmUpdate.isPresent())
         {

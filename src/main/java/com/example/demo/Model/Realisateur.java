@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "realisateur", schema = "cinema")
 public class Realisateur {
-    private int NoRea;
+    private long NoRea;
     private String Nom;
     private String Prenom;
     private List<Film> filmList;
@@ -26,11 +26,11 @@ public class Realisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "norea", nullable = false)
-    public int getNoRea() {
+    public long getNoRea() {
         return this.NoRea;
     }
 
-    public void setNoRea(int noRea) {
+    public void setNoRea(long noRea) {
         this.NoRea = noRea;
     }
 
@@ -46,7 +46,6 @@ public class Realisateur {
 
     @OneToMany
     @JoinColumn(name = "norea", referencedColumnName = "norea", insertable = false, updatable = false)
-    @JsonIgnore
     public List<Film> getFilmList() {
         return this.filmList;
     }

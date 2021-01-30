@@ -20,13 +20,15 @@ public class ActeurService {
 
     public List<Acteur> getAllActeurs() {return this.repository.findAll();}
 
-    public Optional<Acteur> getOneById(int id){return this.repository.findById(id);}
+    public Optional<Acteur> getOneById(long id){return this.repository.findById(id);}
+
+    public Optional<Acteur> getById(long id) { return repository.findById(id); }
 
     public void AddActeur(Acteur acteur){this.repository.save(acteur);}
 
-    public void deleteById(int id){this.repository.deleteById(id);}
+    public void deleteById(long id){this.repository.deleteById(id);}
 
-    public void updateById(Acteur acteur,int id){
+    public void updateById(Acteur acteur,long id){
         Optional<Acteur> ActeurUpdate = this.repository.findById(id);
         if(ActeurUpdate.isPresent())
         {
