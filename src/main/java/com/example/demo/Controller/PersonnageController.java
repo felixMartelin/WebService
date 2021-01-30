@@ -97,7 +97,8 @@ public class PersonnageController {
             return film;
         }
         System.out.println("Delete role by actor id " + acteur.getBody().getNoAct() + " and movie id " + film.getBody().getNoFilm());
-        return ResponseEntity.ok(this.service.delete(acteur.getBody().getNoAct(),film.getBody().getNoFilm()));
+        this.service.delete(acteur.getBody().getNoAct(),film.getBody().getNoFilm());
+        return ResponseEntity.ok().build();
     }
 
     private ResponseEntity<Acteur> getActeur(String noActStr) {

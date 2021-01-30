@@ -30,7 +30,7 @@ public class PersonnageService {
 
     public void AddPersonnage(Personnage personnage){this.repository.save(personnage);}
 
-    public Personnage delete(long act, long film) { return repository.deleteByNoActAndNoFilm(act, film); }
+    public void delete(long act, long film) { repository.deleteByNoActAndNoFilm(act, film); }
 
     public void deleteById(long id, long id2){this.repository.DeleteById(id,id2);}
 

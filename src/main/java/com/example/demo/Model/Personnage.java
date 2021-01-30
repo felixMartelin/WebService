@@ -95,6 +95,9 @@ public class Personnage {
     @ManyToOne
     @JoinColumn(name = "noact", referencedColumnName = "noact", insertable = false, updatable = false)
     public Acteur getActeurByActeurId() {
+        if (acteurByActeurId != null) {
+            acteurByActeurId.setPersonnageList(new ArrayList<>());
+        }
         return acteurByActeurId;
     }
 
@@ -108,11 +111,15 @@ public class Personnage {
     @ManyToOne
     @JoinColumn(name = "nofilm", referencedColumnName = "nofilm", insertable = false, updatable = false)
     public Film getFilmByFilmId() {
+        if (filmByFilmId != null) {
+            filmByFilmId.setPersonnageList(new ArrayList<>());
+        }
         return filmByFilmId;
     }
 
     public void setFilmByFilmId(Film film) {
         this.filmByFilmId = film;
+        filmByFilmId.setPersonnageList(new ArrayList<>());
     }
 
 }

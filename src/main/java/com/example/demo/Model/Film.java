@@ -3,6 +3,7 @@ package com.example.demo.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -104,7 +105,6 @@ public class Film {
 
     @OneToMany
     @JoinColumn(name = "nofilm", referencedColumnName = "nofilm", insertable = false, updatable = false)
-    @JsonIgnore
     public List<Personnage> getPersonnageList() {
         return this.personnageList;
     }
@@ -115,23 +115,29 @@ public class Film {
 
     @ManyToOne
     @JoinColumn(name = "codecat", referencedColumnName = "codecat", insertable = false, updatable = false)
-    @JsonIgnore
     public Categorie getCategorieByCategorieId() {
+        if(categorieByCategorieId != null) {
+            categorieByCategorieId.setFilmList(new ArrayList<>());
+        }
         return this.categorieByCategorieId;
     }
 
     public void setCategorieByCategorieId(Categorie cat) {
         this.categorieByCategorieId = cat;
+        categorieByCategorieId.setFilmList(new ArrayList<>());
     }
 
     @ManyToOne
     @JoinColumn(name = "norea", referencedColumnName = "norea", insertable = false, updatable = false)
-    @JsonIgnore
     public Realisateur getRealisateurByRealisateurId() {
+        if (realisateurByRealisateurId != null) {
+            realisateurByRealisateurId.setFilmList(new ArrayList<>());
+        }
         return this.realisateurByRealisateurId;
     }
 
     public void setRealisateurByRealisateurId(Realisateur real) {
         this.realisateurByRealisateurId = real;
+        realisateurByRealisateurId.setFilmList(new ArrayList<>());
     }
 }
