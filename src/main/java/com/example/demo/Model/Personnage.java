@@ -5,28 +5,45 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 class PersonnageId implements Serializable {
-    @NotNull
     public Integer NoFilm;
 
-    @NotNull
     public Integer NoAct;
 
+    @Id
+    @Column(name = "nofilm", nullable = false)
     public Integer getNoFilm() {
-        return this.NoFilm;
+        return NoFilm;
     }
 
     public void setNoFilm(Integer NoF) {
-        this.NoFilm = NoF;
+        NoFilm = NoF;
     }
 
+    @Id
+    @Column(name = "noact", nullable = false)
     public Integer getNoAct() {
-        return this.NoAct;
+        return NoAct;
     }
 
     public void setNoAct(Integer NoA) {
-        this.NoAct = NoA;
+        NoAct = NoA;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PersonnageId that = (PersonnageId) o;
+        return Objects.equals(NoFilm, that.NoFilm) &&
+                Objects.equals(NoAct, that.NoAct);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(NoFilm, NoAct);
     }
 }
 
@@ -44,31 +61,31 @@ public class Personnage {
     @Id
     @Column(name = "nofilm", nullable = false)
     public int getNoFilm() {
-        return this.NoFilm;
+        return NoFilm;
     }
 
     public void setNoFilm(Integer noFilm) {
-        this.NoFilm = noFilm;
+        NoFilm = noFilm;
     }
 
     @Id
     @Column(name = "noact", nullable = false)
     public int getNoAct() {
-        return this.NoAct;
+        return NoAct;
     }
 
     public void setNoAct(Integer noAct) {
-        this.NoAct = noAct;
+        NoAct = noAct;
     }
 
     @Basic
     @Column(name = "nompers", nullable = false)
     public String getNom() {
-        return this.Nom;
+        return Nom;
     }
 
     public void setNom(String nom) {
-        this.Nom = nom;
+        Nom = nom;
     }
 
     @ManyToOne

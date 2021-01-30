@@ -47,6 +47,7 @@ public class PersonnageController {
 
     @DeleteMapping(value = "/DeletePersonnage")
     public ResponseEntity deleteTemperature(@RequestParam(value = "NoAct") int noAct, @RequestParam(value = "NoFilm") int noFilm){
+        System.out.println("Delete role by actor id " + noAct + " and movie id " + noFilm);
         this.service.deleteById(noAct,noFilm);
         return ResponseEntity.noContent().build();
     }
