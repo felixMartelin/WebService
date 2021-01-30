@@ -69,7 +69,6 @@ public class Acteur {
 
     @OneToMany
     @JoinColumn(name = "noact", referencedColumnName = "noact", insertable = false, updatable = false)
-    @JsonIgnore
     public List<Personnage> getPersonnageList() {
         return this.personnageList;
     }

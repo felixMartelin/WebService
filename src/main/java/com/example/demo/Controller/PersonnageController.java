@@ -35,6 +35,7 @@ public class PersonnageController {
 
     @PostMapping(value = "/AddPersonnage")
     public void addPersonnage(@RequestBody Personnage personnage){
+        System.out.println("Ajout de " + personnage.getNom() + " au film " + personnage.getNoFilm() + " par l'acteur " + personnage.getNoAct());
         this.service.AddPersonnage(personnage);
     }
 
