@@ -9,13 +9,13 @@ import java.util.List;
 @Entity
 @Table(name = "film", schema = "cinema")
 public class Film {
-    private int NoFilm;
+    private long NoFilm;
     private String Titre;
     private int Duree;
     private Date DateSortie;
     private int Budget;
     private int Recette;
-    private int NoRea;
+    private long NoRea;
     private String CodeCat;
     private List<Personnage> personnageList;
     private Realisateur realisateurByRealisateurId;
@@ -24,11 +24,11 @@ public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "nofilm", nullable = false)
-    public int getNoFilm() {
+    public long getNoFilm() {
         return this.NoFilm;
     }
 
-    public void setNoFilm(int noFilm) {
+    public void setNoFilm(long noFilm) {
         this.NoFilm = noFilm;
     }
 
@@ -64,11 +64,11 @@ public class Film {
 
     @Basic
     @Column(name = "norea", nullable = false)
-    public int getNoRea() {
+    public long getNoRea() {
         return this.NoRea;
     }
 
-    public void setNoRea(int noRea) {
+    public void setNoRea(long noRea) {
         this.NoRea = noRea;
     }
 

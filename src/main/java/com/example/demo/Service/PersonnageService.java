@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.Model.Acteur;
 import com.example.demo.Model.Film;
 import com.example.demo.Model.Personnage;
 import com.example.demo.Ressource.CategorieRepository;
@@ -21,15 +22,17 @@ public class PersonnageService {
 
     public List<Personnage> getAllPersonnages() {return this.repository.findAll();}
 
-    public Optional<Personnage> getOneById(int id,int id2){return this.repository.findById(id,id2);}
+    public Optional<Personnage> getOneById(long id,long id2){return this.repository.findById(id,id2);}
+
+    public Personnage getById(Acteur act, Film film) { return repository.findByNoActAndNoFilm(act, film); }
 
     public void AddPersonnage(Personnage personnage){this.repository.save(personnage);}
 
-    public void deleteById(int id, int id2){this.repository.DeleteById(id,id2);}
+    public void deleteById(long id, long id2){this.repository.DeleteById(id,id2);}
 
-    public List<Personnage> getAllByNoAct(int id){return this.repository.findAllByNoAct(id);}
+    public List<Personnage> getAllByNoAct(long id){return this.repository.findAllByNoAct(id);}
 
-    public void updateById(Personnage personnage,int id, int id2){
+    public void updateById(Personnage personnage,long id, long id2){
         Optional<Personnage> personnageUpdate = this.repository.findById(id,id2);
         if(personnageUpdate.isPresent())
         {

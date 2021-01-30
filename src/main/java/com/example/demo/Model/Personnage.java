@@ -8,27 +8,27 @@ import java.io.Serializable;
 import java.util.Objects;
 
 class PersonnageId implements Serializable {
-    public Integer NoFilm;
+    public Film NoFilm;
 
-    public Integer NoAct;
+    public Acteur NoAct;
 
     @Id
     @Column(name = "nofilm", nullable = false)
-    public Integer getNoFilm() {
+    public Film getNoFilm() {
         return NoFilm;
     }
 
-    public void setNoFilm(Integer NoF) {
+    public void setNoFilm(Film NoF) {
         NoFilm = NoF;
     }
 
     @Id
     @Column(name = "noact", nullable = false)
-    public Integer getNoAct() {
+    public Acteur getNoAct() {
         return NoAct;
     }
 
-    public void setNoAct(Integer NoA) {
+    public void setNoAct(Acteur NoA) {
         NoAct = NoA;
     }
 
@@ -52,29 +52,31 @@ class PersonnageId implements Serializable {
 @IdClass(PersonnageId.class)
 @Table(name = "personnage", schema = "cinema")
 public class Personnage {
-    private Integer NoFilm;
-    private Integer NoAct;
+    private Film NoFilm;
+    private Acteur NoAct;
     private String Nom;
+    /*
     private Acteur acteurByActeurId;
     private Film filmByFilmId;
+     */
 
     @Id
     @Column(name = "nofilm", nullable = false)
-    public int getNoFilm() {
+    public Film getNoFilm() {
         return NoFilm;
     }
 
-    public void setNoFilm(Integer noFilm) {
+    public void setNoFilm(Film noFilm) {
         NoFilm = noFilm;
     }
 
     @Id
     @Column(name = "noact", nullable = false)
-    public int getNoAct() {
+    public Acteur getNoAct() {
         return NoAct;
     }
 
-    public void setNoAct(Integer noAct) {
+    public void setNoAct(Acteur noAct) {
         NoAct = noAct;
     }
 
@@ -88,6 +90,7 @@ public class Personnage {
         Nom = nom;
     }
 
+    /*
     @ManyToOne
     @JoinColumn(name = "noact", referencedColumnName = "noact", insertable = false, updatable = false)
     @JsonIgnore
@@ -98,7 +101,9 @@ public class Personnage {
     public void setActeurByActeurId(Acteur acteur) {
         this.acteurByActeurId = acteur;
     }
+    */
 
+    /*
     @ManyToOne
     @JoinColumn(name = "nofilm", referencedColumnName = "nofilm", insertable = false, updatable = false)
     @JsonIgnore
@@ -109,4 +114,5 @@ public class Personnage {
     public void setFilmByFilmId(Film film) {
         this.filmByFilmId = film;
     }
+     */
 }

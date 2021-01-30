@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CategorieRepository extends JpaRepository<Categorie, Integer> {
+public interface CategorieRepository extends JpaRepository<Categorie, String> {
 
     @Query("SELECT c FROM Categorie c WHERE c.code =?1")
     Optional<Categorie> findById(String id);

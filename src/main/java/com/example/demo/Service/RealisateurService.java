@@ -21,13 +21,13 @@ public class RealisateurService {
 
     public List<Realisateur> getAllRealisateurs() {return this.repository.findAll();}
 
-    public Optional<Realisateur> getOneById(int id){return this.repository.findById(id);}
+    public Optional<Realisateur> getOneById(long id){return this.repository.findById(id);}
 
     public void AddRealisateur(Realisateur realisateur){this.repository.save(realisateur);}
 
-    public void deleteById(int id){this.repository.deleteById(id);}
+    public void deleteById(long id){this.repository.deleteById(id);}
 
-    public void updateById(Realisateur realisateur,int id){
+    public void updateById(Realisateur realisateur,long id){
         Optional<Realisateur> RealisateurUpdate = this.repository.findById(id);
         if(RealisateurUpdate.isPresent())
         {

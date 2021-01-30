@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "acteur", schema = "cinema")
 public class Acteur {
-    private int NoAct;
+    private long NoAct;
     private String Nom;
     private String Prenom;
     private Date dateNaissance;
@@ -19,11 +19,11 @@ public class Acteur {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "noact", nullable = false)
-    public int getNoAct() {
+    public long getNoAct() {
         return this.NoAct;
     }
 
-    public void setNoAct(int noAct) {
+    public void setNoAct(long noAct) {
         NoAct = noAct;
     }
 
